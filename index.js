@@ -32,6 +32,9 @@ function drawPieChart() {
 }
 
 
+
+
+// Schlauch Diagramm
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawAreaChart);
 
@@ -43,13 +46,14 @@ function drawAreaChart() {
     ['2015',  660,       1120],
     ['2016',  1030,      540]
   ]);
-
-  var options = {
-    title: 'Company Performance',
-    hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-    vAxis: {minValue: 0}
+  var options_stacked = {
+    isStacked: true,
+    series: {
+        0: { color: 'transparent' }
+    }
   };
 
+
   var chart = new google.visualization.AreaChart(document.getElementById('area_chart_div'));
-  chart.draw(data, options);
+  chart.draw(data, options_stacked);
 }
